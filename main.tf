@@ -12,7 +12,6 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = var.subnet_address_prefixes
   depends_on           = [azurerm_virtual_network.vnet]
 }
-//test commit
 
 module "vm" {
   source                        = "./modules/vm"
