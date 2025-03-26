@@ -54,16 +54,13 @@ variable "retention_policy_days" {
   type = number
 }
 
-variable "share_name" {
-  type = string
-}
-
-variable "share_quota" {
-  type = number
-}
 
 variable "share_access_tier" {
   type = string
 }
 
+variable "public_network_access_enabled" {
+  type = bool
+  default = false
+}
 

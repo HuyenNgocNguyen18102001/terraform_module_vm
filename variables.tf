@@ -184,3 +184,22 @@ variable "vm" {
     }))
   }))
 }
+
+#storageaccount variables
+variable "storageaccount" {
+  type = map(object({
+    storageaccount_name = string
+    account_tier = string
+    account_replication_type = string
+    account_kind = string
+    versioning_enabled = bool
+    share_access_tier = string
+    delete_retention_policy_days = optional(number, null)
+    container_delete_retention_policy_days = optional(number, null)
+    retention_policy_days = number
+    change_feed_enabled = bool
+    infrastructure_encryption_enabled = bool
+    tags = map(any)
+  }))
+}
+

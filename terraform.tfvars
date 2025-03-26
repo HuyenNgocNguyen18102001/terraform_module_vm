@@ -92,3 +92,23 @@ vm = {
     }
   }
 }
+
+storageaccount = {
+  "helen-storageaccount01" = {
+    storageaccount_name = "helenstorageaccount01"
+    account_tier = "Standard"
+    account_replication_type = "LRS"
+    account_kind = "StorageV2"
+    versioning_enabled = true
+    share_access_tier = "Hot"
+    delete_retention_policy_days = 7
+    container_delete_retention_policy_days = 8
+    retention_policy_days = 7
+    change_feed_enabled = true
+    infrastructure_encryption_enabled = true
+    tags = {
+      environment = "dev"
+      owner       = "helen"
+    }
+  }
+}

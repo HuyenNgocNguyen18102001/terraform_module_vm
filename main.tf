@@ -36,4 +36,22 @@ module "vm" {
   subnet_id                     = azurerm_subnet.subnet.id
 }
 
-
+module "storageaccount" {
+  source = "./modules/storageaccount"
+  for_each = var.storageaccount
+  storageaccount_name = each.value.storageaccount_name
+  resource_group_name = var.rg_name
+  location = var.location
+  account_tier = each.value.account_tier
+  account_replication_type = each.value.account_replication_type
+  account_kind = each.value.account_kind
+  versioning_enabled = each.value.versioning_enabled
+  share_access_tier = each.value.share_access_tier
+  delete_retention_policy_days = each.value.delete_retention_policy_days
+  container_delete_retention_policy_days = each.value.container_delete_retention_policy_days
+  retention_policy_days = each.value.retention_policy_days
+  change_feed_enabled = each.value.change_feed_enabled
+  infrastructure_encryption_enabled = each.value.infrastructure_encryption_enabled
+  tags = each.value.tags
+  
+}

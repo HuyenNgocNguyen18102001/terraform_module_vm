@@ -5,6 +5,7 @@ resource "azurerm_storage_account" "storageaccount" {
   account_replication_type = var.account_replication_type
   account_tier             = var.account_tier
   account_kind             = var.account_kind
+  public_network_access_enabled = var.public_network_access_enabled
   blob_properties {
     versioning_enabled  = var.versioning_enabled
     change_feed_enabled = var.change_feed_enabled
