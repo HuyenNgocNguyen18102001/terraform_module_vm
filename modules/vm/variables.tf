@@ -3,6 +3,7 @@ variable "location" {}
 
 variable "data_disk" {
   type = map(object({
+    data_disk_name         = string
     size                   = number
     type                   = string
     zone                   = optional(number, null)
@@ -149,9 +150,6 @@ variable "private_ip_address" {
 }
 variable "vnet_address_space" {
   type = list(string)
-}
-variable "data_disk_name" {
-  type = string
 }
 variable "vm_name" {
   type = string

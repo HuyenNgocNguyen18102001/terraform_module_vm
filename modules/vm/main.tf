@@ -31,7 +31,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_password                  = random_password.password.result
   disable_password_authentication = false
   license_type                    = var.os_image == null ? null : var.os_license_type
-  network_interface_ids           = [azurerm_network_interface.network_interface_ids.id]
+  network_interface_ids           = [azurerm_network_interface.network_interface_ids.id] #Avoid VM attach 2 NIC instead of each NIC per VM 
   os_disk {
     name                 = var.os_disk.name
     disk_size_gb         = var.os_disk.size
@@ -84,7 +84,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
 resource "azurerm_managed_disk" "data_disk" {
   for_each             = var.data_disk
-  name                 = var.data_disk_name
+  name                 = each.value.data_disk_name
   resource_group_name  = var.rg_name
   location             = var.location
   zone                 = each.value.zone != null ? each.value.zone : null

@@ -5,19 +5,20 @@ variable "location" {
   type = string
 }
 
-variable "data_disk" {
-  type = map(object({
-    size                   = number
-    type                   = string
-    zone                   = optional(number, null)
-    caching                = optional(string, "None")
-    create_option          = optional(string, "Empty")
-    source                 = optional(string, "")
-    disk_encryption_set_id = optional(string, "")
-    data_disks_tags        = optional(map(string), {})
-  }))
-  default = {}
-}
+# variable "data_disk" {
+#   type = map(object({
+#     data_disk_name         = string
+#     size                   = number
+#     type                   = string
+#     zone                   = optional(number, null)
+#     caching                = optional(string, "None")
+#     create_option          = optional(string, "Empty")
+#     source                 = optional(string, "")
+#     disk_encryption_set_id = optional(string, "")
+#     data_disks_tags        = optional(map(string), {})
+#   }))
+#   default = {}
+# }
 
 variable "is_appliance" {
   description = "Specifies if this VM is an appliance or regular VM. Toggle this to `true` will change the naming convention of VM created by this module."
@@ -144,9 +145,7 @@ variable "subnet_name" {
 variable "subnet_address_prefixes" {
   type = list(string)
 }
-variable "network_interface_name" {
-  type = string
-}
+
 variable "private_ip_address_allocation" {
   type = string
 }
@@ -167,17 +166,17 @@ variable "vm" {
     vm_size            = string
     tags               = map(any)
     private_ip_address = string
+    network_interface_name = string
     vm_admin_username  = string
-    data_disk_name     = string
-    os_disk = map(object({
-      size    = number
+    os_disk = object({
       name    = string
+      size    = number
       type    = string
       caching = string
-    }))
+    })
     data_disk = map(object({
+      data_disk_name = string
       size    = number
-      name    = string
       type    = string
       zone    = optional(number, null)
       caching = string

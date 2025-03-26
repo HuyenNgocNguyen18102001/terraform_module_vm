@@ -29,10 +29,11 @@ module "vm" {
   vm_tags                       = each.value.tags
   vnet_name                     = azurerm_virtual_network.vnet.name
   subnet_address_prefixes       = var.subnet_address_prefixes
-  network_interface_name        = var.network_interface_name
+  network_interface_name        = each.value.network_interface_name
   private_ip_address_allocation = var.private_ip_address_allocation
   private_ip_address            = each.value.private_ip_address
   vnet_address_space            = var.vnet_address_space
-  data_disk_name                = each.value.data_disk_name
   subnet_id                     = azurerm_subnet.subnet.id
 }
+
+
